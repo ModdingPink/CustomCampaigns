@@ -1,6 +1,6 @@
-# #{name}
+# CustomCampaigns
 
-#{description}
+Custom Campaigns for Quest
 
 ## Credits
 

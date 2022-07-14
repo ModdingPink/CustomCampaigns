@@ -1,0 +1,15 @@
+{
+  "_QPVersion": "0.1.1",
+  "name": "CustomCampaigns",
+  "id": "customcampaigns",
+  "author": "Raine and Pink",
+  "version": "0.0.1",
+  "packageId": "com.beatgames.beatsaber",
+  "packageVersion": "1.23.0",
+  "description": "Adds support for custom campaigns in Beat Saber for the Oculus Quest.",
+  "dependencies": [],
+  "modFiles": [],
+  "libraryFiles": [],
+  "fileCopies": [],
+  "copyExtensions": []
+}

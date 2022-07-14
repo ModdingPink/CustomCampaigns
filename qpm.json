@@ -1,34 +1,45 @@
 {
-	"sharedDir": "shared",
-	"dependenciesDir": "extern",
-	"info": {
-		"name": "#{name}",
-		"id": "#{id}",
-		"version": "0.1.0",
-		"url": null,
-		"additionalData": {
-			"overrideSoName": "lib#{id}.so"
-		}
-	},
-	"dependencies": [
-		{
-			"id": "beatsaber-hook",
-			"versionRange": "^3.8.0",
-			"additionalData": {
-				"extraFiles": [
-					"src/inline-hook"
-				]
-			}
-		},
-		{
-			"id": "modloader",
-			"versionRange": "=1.2.3",
-			"additionalData": {
-				
-			}
-		}
-	],
-	"additionalData": {
-		
-	}
+  "sharedDir": "shared",
+  "dependenciesDir": "extern",
+  "info": {
+    "name": "CustomCampaigns",
+    "id": "customcampaigns",
+    "version": "0.1.0",
+    "url": "https://github.com/bsmgpink/customcampaigns",
+    "additionalData": {
+      "overrideSoName": "libCustomCampaigns.so"
+    }
+  },
+  "dependencies": [
+    {
+      "id": "beatsaber-hook",
+      "versionRange": "^3.8.0",
+      "additionalData": {
+        "extraFiles": [
+          "src/inline-hook"
+        ]
+      }
+    },
+    {
+      "id": "modloader",
+      "versionRange": "=1.2.3",
+      "additionalData": {}
+    },
+    {
+      "id": "codegen",
+      "versionRange": "^0.24.1",
+      "additionalData": {}
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "^0.15.13",
+      "additionalData": {}
+    },
+    {
+      "id": "questui",
+      "versionRange": "^0.16.1",
+      "additionalData": {}
+    }
+  ],
+  "additionalData": {}
 }
