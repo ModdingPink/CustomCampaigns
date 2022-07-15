@@ -1,4 +1,7 @@
 #include "main.hpp"
+#include "Utils/Logger.hpp"
+
+#include "questui/shared/QuestUI.hpp"
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
 
@@ -7,12 +10,6 @@ static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to 
 Configuration& getConfig() {
     static Configuration config(modInfo);
     return config;
-}
-
-// Returns a logger, useful for printing debug messages
-Logger& getLogger() {
-    static Logger* logger = new Logger(modInfo);
-    return *logger;
 }
 
 // Called at the early stages of game loading
@@ -28,6 +25,7 @@ extern "C" void setup(ModInfo& info) {
 // Called later on in the game loading - a good time to install function hooks
 extern "C" void load() {
     il2cpp_functions::Init();
+    QuestUI::Register::RegisterAllModSettingsFlowCoordinator<CustomCampaigns::UI::CampaignSelectionFlowCoordinator*>(modInfo, "Custom Campaigns");
 
-    getLogger().info("Installing hooks...");
+    LoggerBuffer().info("Installing hooks...");
 }
