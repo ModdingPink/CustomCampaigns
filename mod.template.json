@@ -5,7 +5,7 @@
   "author": "Raine and Pink",
   "version": "0.0.1",
   "packageId": "com.beatgames.beatsaber",
-  "packageVersion": "1.23.0",
+  "packageVersion": "1.24.0",
   "description": "Adds support for custom campaigns in Beat Saber for the Oculus Quest.",
   "dependencies": [],
   "modFiles": [],

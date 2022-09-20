@@ -1,7 +1,15 @@
 #include "main.hpp"
-#include "Utils/Logger.hpp"
+#include "Utils/logger.hpp"
+#include "Utils/hooking.hpp"
 
-#include "questui/shared/QuestUI.hpp"
+#include "custom-types/shared/register.hpp"
+
+#include "lapiz/shared/zenject/Zenjector.hpp"
+#include "lapiz/shared/zenject/Location.hpp"
+#include "lapiz/shared/AttributeRegistration.hpp"
+
+#include "Installers/MenuInstaller.hpp"
+#include "Installers/CoreInstaller.hpp"
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
 
@@ -19,13 +27,21 @@ extern "C" void setup(ModInfo& info) {
     modInfo = info;
 	
     getConfig().Load();
-    getLogger().info("Completed setup!");
+    INFO("Completed setup!");
 }
 
 // Called later on in the game loading - a good time to install function hooks
 extern "C" void load() {
     il2cpp_functions::Init();
-    QuestUI::Register::RegisterAllModSettingsFlowCoordinator<CustomCampaigns::UI::CampaignSelectionFlowCoordinator*>(modInfo, "Custom Campaigns");
 
-    LoggerBuffer().info("Installing hooks...");
+    custom_types::Register::AutoRegister();
+    Lapiz::Attributes::AutoRegister();
+
+    // QuestUI::Register::RegisterAllModSettingsFlowCoordinator<CustomCampaigns::UI::CampaignSelectionFlowCoordinator*>(modInfo, "Custom Campaigns");
+    INFO("Installing hooks and zenject bindings..");
+    Hooks::InstallHooks(CustomCampaigns::Logging::getLogger());
+
+    auto zenjector = ::Lapiz::Zenject::Zenjector::Get();
+    zenjector->Install<CustomCampaigns::CoreInstaller*>(Lapiz::Zenject::Location::App);
+    zenjector->Install<CustomCampaigns::MenuInstaller*>(Lapiz::Zenject::Location::Menu);
 }

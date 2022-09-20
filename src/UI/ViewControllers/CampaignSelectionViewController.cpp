@@ -1,17 +1,21 @@
-#include "logger.hpp"
-
 #include "UI/ViewControllers/CampaignSelectionViewController.hpp"
+#include "Utils/logger.hpp"
 
-#include "FlowCoordinatorRegister_Internal.hpp"
-#include "HMUI/ViewController_AnimationDirection.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
+DEFINE_TYPE(CustomCampaigns::UI::ViewControllers, CampaignSelectionViewController)
 
 namespace CustomCampaigns::UI::ViewControllers {
+    void CampaignSelectionViewController::Inject(CustomCampaigns::UI::MainMenuReplacementFlowCoordinator* baseFCs) {
+        DEBUG("Inject Method fired");
+        baseFC = baseFCs;
+    }
+
     void CampaignSelectionViewController::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
         if (firstActivation) {
-            auto horizontals = CreateHorizontalLayoutGroup(get_transform());
 
-            
         }
+    }
+
+    void CampaignSelectionViewController::Awake() {
+        fileWatcher->filePath = "/sdcard/CampaignSelectionView.bsml";
     }
 }
