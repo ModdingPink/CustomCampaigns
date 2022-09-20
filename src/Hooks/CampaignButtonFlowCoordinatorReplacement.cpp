@@ -1,5 +1,5 @@
 #include "Utils/hooking.hpp"
-#include "Utils/logger.hpp"
+#include "Utils/Logger.hpp"
 
 #include "GlobalNamespace/MainMenuViewController.hpp"
 #include "UnityEngine/UI/Button.hpp"
@@ -28,7 +28,7 @@ MAKE_AUTO_HOOK_MATCH(CampaignButton_mainMenu, &GlobalNamespace::MainMenuViewCont
         DEBUG("shit2");
         campaignButton->get_gameObject()->AddComponent<CustomCampaigns::CampaignSpriteHandler*>();
         DEBUG("shit3");
-        auto newFlow = BSML::Helpers::CreateFlowCoordinator<CustomCampaigns::UI::MainMenuReplacementFlowCoordinator*>();
+        // HMUI::FlowCoordinator* newFlow = BSML::Helpers::CreateFlowCoordinator<CustomCampaigns::UI::MainMenuReplacementFlowCoordinator*>();
         DEBUG("shit4");
         campaignButton->get_onClick()->m_Calls->m_RuntimeCalls->Clear();
         DEBUG("shit5");
